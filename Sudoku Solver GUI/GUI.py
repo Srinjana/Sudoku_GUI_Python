@@ -265,8 +265,8 @@ def format_time(secs):
 
 
 def main():
-    win = pygame.display.set_mode((540,600))
-    pygame.display.set_caption("Sudoku")
+#     win = pygame.display.set_mode((540,600))
+#     pygame.display.set_caption("Sudoku")
     board = Grid(9, 9, 540, 540, win)
     key = None
     run = True
@@ -298,10 +298,15 @@ def main():
                     key = 8
                 if event.key == pygame.K_9 or event.key == pygame.K_KP9:
                     key = 9
+                    
                 if event.key == pygame.K_DELETE:
                     board.clear()
                     key = None
-                if event.key == pygame.K_RETURN:
+                 
+                if event.key == pygame.K_SPACE:
+                    board.solve_gui()
+                    
+                if event.key == pygame.K_RETURN or event.key==pygame.K_KP_ENTER:
                     i, j = board.selected
                     if board.cubes[i][j].temp != 0:
                         if board.place(board.cubes[i][j].temp):
