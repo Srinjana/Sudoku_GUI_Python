@@ -137,15 +137,15 @@ class Grid:
                 pygame.display.update()
                 pygame.time.delay(100)
 
-                if self.solve_gui():
-                    return True
+            if self.solve_gui():
+                return True
 
-                self.model[row][col] = 0
-                self.cubes[row][col].set(0)
-                self.update_model()
-                self.cubes[row][col].draw_new(self.win, False)
-                pygame.display.update()
-                pygame.time.delay(100)
+            self.model[row][col] = 0
+            self.cubes[row][col].set(0)
+            self.update_model()
+            self.cubes[row][col].draw_new(self.win, False)
+            pygame.display.update()
+            pygame.time.delay(100)
 
         return False
 
@@ -260,13 +260,13 @@ def format_time(secs):
     minute = secs // 60
     hour = minute // 60
 
-    mat = " " + str(hour) + ":" + str(minute) + ":" + str(sec)
+    mat = " "  + str(minute) + ":" + str(sec)
     return mat
 
 
 def main():
-#     win = pygame.display.set_mode((540,600))
-#     pygame.display.set_caption("Sudoku")
+    win = pygame.display.set_mode((540,600))
+    pygame.display.set_caption("Sudoku")
     board = Grid(9, 9, 540, 540, win)
     key = None
     run = True
@@ -336,3 +336,4 @@ def main():
 
 main()
 pygame.quit()
+
