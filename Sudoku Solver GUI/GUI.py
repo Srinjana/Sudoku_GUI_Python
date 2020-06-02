@@ -265,8 +265,8 @@ def format_time(secs):
 
 
 def main():
-    win = pygame.display.set_mode((540, 600))
-    pygame.display.set_caption("SUDOKU")
+    win = pygame.display.set_mode((540,600))
+    pygame.display.set_caption("Sudoku")
     board = Grid(9, 9, 540, 540, win)
     key = None
     run = True
@@ -315,18 +315,18 @@ def main():
                             print("Bravo Game Over")
                             # run = False
                 
-                if event.type == pygame.MOUSEBUTTONDOWN:
-                    posi = pygame.mouse.get_pos()
-                    clicked = board.click(posi)
-                    if clicked:
-                        board.select(clicked[0], clicked[1])
-                        key = None
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                posi = pygame.mouse.get_pos()
+                clicked = board.click(posi)
+                if clicked:
+                    board.select(clicked[0], clicked[1])
+                    key = None
 
-            if board.selected and key != None:
-                board.sketch(key)
+        if board.selected and key != None:
+            board.sketch(key)
 
-            redraw_window(win, board, play_time, strikes)
-            pygame.display.update()
+        redraw_window(win, board, play_time, strikes)
+        pygame.display.update()
 
 
 main()
